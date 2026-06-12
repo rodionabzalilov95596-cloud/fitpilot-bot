@@ -1,0 +1,30 @@
+# Render Blueprint — пункты 2 и 3 делаются автоматически при деплое.
+# Dashboard → New → Blueprint → выберите репозиторий с GitHub.
+
+services:
+  - type: web
+    name: fitpilot-bot
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: ./data
+      - key: LLM_PROVIDER
+        value: yandex
+      - key: MAX_BOT_TOKEN
+        sync: false
+      - key: YANDEX_API_KEY
+        sync: false
+      - key: YANDEX_FOLDER_ID
+        sync: false
+      - key: YANDEX_MODEL_URI
+        sync: false
+      - key: VK_BOT_TOKEN
+        sync: false
+      - key: VK_GROUP_ID
+        sync: false
