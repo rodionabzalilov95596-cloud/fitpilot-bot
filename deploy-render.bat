@@ -17,6 +17,6 @@ echo После деплоя скопируйте URL сервиса и вста
 echo   https://ВАШ-СЕРВИС.onrender.com/miniapp/schedule/
 echo.
 
-start https://dashboard.render.com/blueprints/new
+start https://render.com/deploy?repo=https://github.com/rodionabzalilov95596-cloud/fitpilot-bot
 
 pause
