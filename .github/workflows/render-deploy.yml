@@ -1,0 +1,23 @@
+name: Deploy to Render
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Deploy web service
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          MAX_BOT_TOKEN: ${{ secrets.MAX_BOT_TOKEN }}
+          YANDEX_API_KEY: ${{ secrets.YANDEX_API_KEY }}
+          YANDEX_FOLDER_ID: ${{ secrets.YANDEX_FOLDER_ID }}
+          YANDEX_MODEL_URI: ${{ secrets.YANDEX_MODEL_URI }}
+        run: node scripts/deploy-render.mjs
