@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>График работы — ФитПилот</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://st.max.ru/js/max-web-app.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>График работы</h1>
+      <p class="subtitle">Отметь рабочие дни и время смен</p>
+    </header>
+
+    <div id="days" class="days" aria-live="polite"></div>
+
+    <div id="editor" class="editor hidden">
+      <h2 id="editor-title">День</h2>
+      <div class="toggle-row">
+        <button type="button" class="chip" data-work="1">Рабочий</button>
+        <button type="button" class="chip" data-work="0">Выходной</button>
+      </div>
+      <div id="time-fields" class="time-fields hidden">
+        <label>
+          Начало
+          <input type="time" id="shift-start">
+        </label>
+        <label>
+          Конец
+          <input type="time" id="shift-end">
+        </label>
+        <p class="hint">Ночная смена: конец раньше начала (22:00 → 06:00)</p>
+      </div>
+      <button type="button" id="editor-back" class="btn btn--ghost">← Назад к дням</button>
+    </div>
+
+    <footer class="footer">
+      <button type="button" id="save-btn" class="btn btn--primary">Сохранить</button>
+      <p id="status" class="status" role="status"></p>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
