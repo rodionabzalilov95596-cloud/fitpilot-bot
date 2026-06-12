@@ -1,12 +1,13 @@
-# Render Blueprint — пункты 2 и 3 делаются автоматически при деплое.
-# Dashboard → New → Blueprint → выберите репозиторий с GitHub.
+# Render Blueprint — https://render.com/deploy?repo=https://github.com/rodionabzalilov95596-cloud/fitpilot-bot
+# Перед Apply заполните 4 секрета ниже (скопируйте из .env).
 
 services:
   - type: web
     name: fitpilot-bot
     runtime: node
     plan: free
-    buildCommand: npm install && npm run build
+    branch: main
+    buildCommand: npm install --include=dev && npm run build
     startCommand: npm start
     healthCheckPath: /health
     envVars:
@@ -23,8 +24,4 @@ services:
       - key: YANDEX_FOLDER_ID
         sync: false
       - key: YANDEX_MODEL_URI
-        sync: false
-      - key: VK_BOT_TOKEN
-        sync: false
-      - key: VK_GROUP_ID
         sync: false
